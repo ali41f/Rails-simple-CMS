@@ -1,0 +1,32 @@
+
+<div class="pages index">
+  <h2>Pages</h2>
+  <%= image_tag('plus_sign.png', :size => '11x11', :alt => '+') %>
+  <%= link_to("Add New page", new_page_path, :class => "action new") %>
+
+  <table class="listing" summary="page list">
+    <tr class="header">
+      <th>#</th>
+      <th>page</th>
+      <th>permalink</th>
+      <th>Visible</th>
+      <th>Subject</th>
+      <th>Actions</th>
+    </tr>
+    <% @pages.each do |page| %>
+    <tr>
+      <td><%= page.position %></td>
+      <td><%= page.name %></td>
+      <td><%= page.permalink %></td>
+      <td class="center"><%= status_tag(page.visible) %></td>
+      <td class="center"><%= page.subject.name %></td>
+      <td class="actions">
+        <%= link_to("Show", page_path(page.id), :class => 'action show') %>
+        <%= link_to("Edit", edit_page_path(page.id), :class => 'action edit') %>
+        <%= link_to("Delete", delete_page_path(page.id), :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>
