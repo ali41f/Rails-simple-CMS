@@ -5,6 +5,9 @@ class AccessController < ApplicationController
 
 
   def menu
+    u = User.find(session[:user_id])
+    @f_name = u.first_name
+    @l_name = u.last_name
   end
 
   def login
@@ -36,7 +39,7 @@ class AccessController < ApplicationController
     redirect_to(access_login_path)
   end
 
-  
+
 
 
 end
